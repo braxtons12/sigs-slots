@@ -1,9 +1,9 @@
-extern crate signals;
+extern crate sigs_slots;
 
 use std::rc::Rc;
 use std::cell::RefCell;
 
-use signals::{Event, Signal, Slot };
+use sigs_slots::{Event, Signal, Slot };
 
 struct Thing1 {
     slots: Vec<Rc<RefCell<dyn Slot<String>>>>,
