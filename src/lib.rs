@@ -1,7 +1,9 @@
 use std::rc::Rc;
 use std::cell::RefCell;
+use std::sync::Arc;
+use std::sync::RwLock;
 
-/// Generic Event Enum for transmitting a signal 
+/// Generic Event Enum for transmitting a signal
 pub enum Event<T> {
     Sig(T),
 }
@@ -12,6 +14,19 @@ pub trait Signal<T> {
     /// # Arguments
     /// * 'slot' - An Rc wrapped RefCell containing the slot to be connected
     fn connect(&mut self, slot: Rc<RefCell<dyn Slot<T>>>);
+    /// Emits the given signal to all connected slots
+    /// # Arguments
+    /// * 'event' - the event to be sent to the slots
+    fn emit(&mut self, event: Event<T>);
+}
+
+#[cfg(feature = "threadsafe")]
+/// Generic Sync Signal trait to be implemented by the object emitting the signals
+pub trait SyncSignal<T> {
+    // Connects the given slot to this signal's list of consumers
+    // # Arguments
+    //  * 'slot' - An Arc wrapped RwLock containing the slot to be connected
+    fn connect(&mut self, slot: Arc<RwLock<dyn Slot<T>>>);
     /// Emits the given signal to all connected slots
     /// # Arguments
     /// * 'event' - the event to be sent to the slots
