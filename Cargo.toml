@@ -1,5 +1,5 @@
 [package]
-name = "signals"
+name = "sigs-slots"
 version = "0.1.0"
 authors = ["braxtons12 <braxtonsalyer@gmail.com>"]
 edition = "2018"
