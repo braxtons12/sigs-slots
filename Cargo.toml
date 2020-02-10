@@ -4,7 +4,8 @@ version = "0.1.0"
 authors = ["braxtons12 <braxtonsalyer@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/braxtons12/signals"
-
+description = "A generic, short, and simple signals and slots implementation for Rust"
+license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
